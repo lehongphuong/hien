@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="practicsForm" type="form.PracticsForm" />
+
+		<form-bean name="challengesForm" type="form.ChallengesForm" />
+
+		<form-bean name="tutorialFormMain" type="form.TutorialsForm" />
+
+		<form-bean name="homeForm" type="form.HomeForm" />
+
+
+<!--admin bean -->
+
+		<form-bean name="accountForm" type="form.account.AccountForm" />
+
+		<form-bean name="userForm" type="form.user.UserForm" />
+
+		<form-bean name="menuForm" type="form.menu.MenuForm" />
+
+		<form-bean name="subjectForm" type="form.subject.SubjectForm" />
+
+		<form-bean name="codeForm" type="form.code.CodeForm" />
+
+		<form-bean name="statusForm" type="form.status.StatusForm" />
+
+		<form-bean name="problemForm" type="form.problem.ProblemForm" />
+
+		<form-bean name="tutorialForm" type="form.tutorial.TutorialForm" />
+
+		<form-bean name="editorialForm" type="form.editorial.EditorialForm" />
+
+		<form-bean name="leaderBoardForm" type="form.leaderboard.LeaderBoardForm" />
+
+		<form-bean name="categoriesForm" type="form.categories.CategoriesForm" />
+
+		<form-bean name="testCaseForm" type="form.testcase.TestCaseForm" />
+
+		<form-bean name="submitForm" type="form.submit.SubmitForm" />
+
+		<form-bean name="tutorialCodeForm" type="form.tutorialcode.TutorialCodeForm" />
+<!--End Admin bean -->
+
+	</form-beans>
+
+	<action-mappings>
+
+		<action input="/home.jsp" name="homeForm" path="/home"
+			type="action.HomeAction" scope="request">
+			<forward name="thanhCong" path="/home.jsp" />
+		</action>
+
+<!--login and register -->
+		<action input="/home.jsp" name="homeForm" path="/user-login"
+			type="action.LoginAction" scope="request">
+			<forward name="thanhCong" path="/home.do" redirect="true" />
+		</action>
+		<action input="/home.jsp" name="homeForm" path="/user-register"
+			type="action.RegisterAction" scope="request">
+			<forward name="thanhCong" path="/home.do" redirect="true" />
+		</action>
+		<action input="/home.jsp" name="homeForm" path="/user-logout"
+			type="action.UserLogoutAction" scope="request">
+			<forward name="thanhCong" path="/home.do" redirect="true" />
+		</action>
+
+		<action input="/editaccount.jsp" name="homeForm" path="/prepare-edit-account"
+			type="action.account.PrepareEditAccountAction" scope="request">
+			<forward name="thanhCong" path="/editaccount.jsp" />
+		</action>
+
+		<action input="/editaccount.jsp" name="homeForm" path="/edit-account"
+			type="action.account.EditAccountAction" scope="request">
+			<forward name="thanhCong" path="/prepare-edit-account.do"
+				redirect="true" />
+		</action>
+
+		<action input="/home.jsp" name="homeForm" path="/register-account"
+			type="action.account.RegisterAccountAction" scope="request">
+			<forward name="thanhCong" path="/home.do" redirect="true" />
+		</action>
+		
+		<action input="/seo.jsp" name="homeForm" path="/seo"
+			type="action.SeoAction" scope="request">
+			<forward name="thanhCong" path="/seo.jsp" />
+		</action>
+		
+		<action input="/leaderboard.jsp" name="homeForm" path="/leader-board"
+			type="action.LeaderboardAction" scope="request">
+			<forward name="thanhCong" path="/leaderboard.jsp" />
+		</action>
+
+<!--login and register -->
+
+<!--Practics -->
+		<action input="/home.jsp" name="practicsForm" path="/home-to-practics"
+			type="action.HomeToPracticsAction" scope="request">
+			<forward name="practics" path="/list-practics.do" />
+			<forward name="tutorials" path="/list-tutorial-main.do" />
+		</action>
+
+		<action input="/home.jsp" name="practicsForm" path="/list-practics"
+			type="action.PracticsAction" scope="request">
+			<forward name="thanhCong" path="/practics.jsp" />
+		</action>
+<!--end practics -->
+
+<!--tutorial -->
+		<action input="/home.jsp" name="tutorialFormMain" path="/list-tutorial-main"
+			type="action.TutorialAction" scope="request">
+			<forward name="thanhCong" path="/tutorials.jsp" />
+		</action>
+<!--end tutorial -->
+
+<!--run code html -->
+		<action input="/tutorials.jsp" name="tutorialFormMain" path="/run-html"
+			type="action.RunHtmlAction" scope="request">
+			<forward name="thanhCong" path="/runhtml.jsp" />
+		</action>
+
+		<action input="/tutorials.jsp" name="tutorialFormMain" path="/run-code-tutorial"
+			type="action.RunCodeAction" scope="request">
+			<forward name="thanhCong" path="/list-tutorial-main.do" />
+		</action>
+<!--/end run code html -->
+
+
+
+<!--problem -->
+		<action input="/challenges.jsp" name="practicsForm" path="/problem"
+			type="action.ProblemAction" scope="request">
+			<forward name="thanhCong" path="/challenges.jsp" />
+		</action>
+
+<!--end problem -->
+
+<!--challenger -->
+		<action input="/challenges.jsp" name="challengesForm" path="/chanllenges"
+			type="action.ChallengesAction" scope="request">
+			<forward name="thanhCong" path="/challenges.jsp" />
+		</action>
+
+		<action input="/challenges.jsp" name="challengesForm" path="/run-code"
+			type="action.RunCodeAction" scope="request">
+			<forward name="thanhCong" path="/chanllenges.do" />
+		</action>
+
+		<action input="/challenges.jsp" name="challengesForm" path="/submit-code"
+			type="action.ChallengesAction" scope="request">
+			<forward name="thanhCong" path="/challenges.jsp" />
+		</action>
+<!--end challenger -->
+
+
+
+
+
+<!-- action admin -->
+
+
+<!--Menu -->
+		<action input="/admin/menu/addmenu.jsp" name="menuForm" path="/add-menu"
+			type="action.menu.MenuInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-menu.do" />
+		</action>
+
+		<action input="/admin/menu/editmenu.jsp" name="menuForm" path="/update-menu"
+			type="action.menu.MenuUpdateAction" scope="request">
+			<forward name="thanhCong" path="/list-menu.do" />
+		</action>
+
+		<action input="/admin/menu/menu.jsp" name="menuForm"
+			path="/prepare-update-menu" type="action.menu.MenuPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/menu/editmenu.jsp" />
+		</action>
+
+		<action input="/admin/menu/menu.jsp" name="menuForm" path="/delete-menu"
+			type="action.menu.MenuDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-menu.do" />
+		</action>
+
+		<action input="/admin/menu/menu.jsp" name="menuForm" path="/list-menu"
+			type="action.menu.MenuListAction" scope="request">
+			<forward name="thanhCong" path="/admin/menu/menu.jsp" />
+		</action>
+<!--end menu -->
+
+<!--Subject -->
+		<action input="/admin/subject/subject.jsp" name="subjectForm"
+			path="/list-subject" type="action.subject.SubjectListAction" scope="request">
+			<forward name="thanhCong" path="/admin/subject/subject.jsp" />
+		</action>
+
+		<action input="/admin/subject/subject.jsp" name="subjectForm"
+			path="/prepare-add-subject" type="action.subject.SubjectPrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/subject/addsub.jsp" />
+		</action>
+
+		<action input="/admin/subject/addsub.jsp" name="subjectForm"
+			path="/add-subject" type="action.subject.SubjectInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-subject.do" />
+		</action>
+
+		<action input="/admin/subject/subject.jsp" name="subjectForm"
+			path="/delete-subject" type="action.subject.SubjectDeleteAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-subject.do" />
+		</action>
+
+		<action input="/admin/subject/editsub.jsp" name="subjectForm"
+			path="/update-subject" type="action.subject.SubjectUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-subject.do" />
+		</action>
+
+		<action input="/admin/subject/subject.jsp" name="subjectForm"
+			path="/prepare-update-subject" type="action.subject.SubjectPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/subject/editsub.jsp" />
+		</action>
+
+<!--end subject -->
+
+<!--user -->
+		<action input="/admin/user/user.jsp" name="userForm" path="/list-user"
+			type="action.user.UserListAction" scope="request">
+			<forward name="thanhCong" path="/admin/user/user.jsp" />
+		</action>
+
+		<action input="/admin/user/user.jsp" name="userForm" path="/prepare-add-user"
+			type="action.user.UserPrepareInsertAction" scope="request">
+			<forward name="thanhCong" path="/admin/user/adduse.jsp" />
+		</action>
+
+		<action input="/admin/user/adduse.jsp" name="userForm" path="/add-user"
+			type="action.user.UserInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-user.do" />
+		</action>
+
+		<action input="/admin/user/user.jsp" name="userForm" path="/delete-user"
+			type="action.user.UserDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-user.do" />
+		</action>
+
+		<action input="/admin/user/edituse.jsp" name="userForm" path="/update-user"
+			type="action.user.UserUpdateAction" scope="request">
+			<forward name="thanhCong" path="/list-user.do" />
+		</action>
+
+		<action input="/admin/user/user.jsp" name="userForm"
+			path="/prepare-update-user" type="action.user.UserPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/user/edituse.jsp" />
+		</action>
+<!--end user -->
+
+
+
+<!--Tutorials -->
+		<action input="/admin/tutorial/addtut.jsp" name="tutorialForm"
+			path="/add-tutorial" type="action.tutorial.TutInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-tutorial.do" />
+		</action>
+
+		<action input="/admin/tutorial/edittut.jsp" name="tutorialForm"
+			path="/update-tutorial" type="action.tutorial.TutUpdateAction" scope="request">
+			<forward name="thanhCong" path="/list-tutorial.do" />
+		</action>
+
+		<action input="/admin/tutorial/tutorial.jsp" name="tutorialForm"
+			path="/prepare-add-tutorial" type="action.tutorial.TutPrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/tutorial/addtut.jsp" />
+		</action>
+
+		<action input="/admin/tutorial/tutorial.jsp" name="tutorialForm"
+			path="/prepare-update-tutorial" type="action.tutorial.TutPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/tutorial/edittut.jsp" />
+		</action>
+
+		<action input="/admin/tutorial/tutorial.jsp" name="tutorialForm"
+			path="/delete-tutorial" type="action.tutorial.TutDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-tutorial.do" />
+		</action>
+
+		<action input="/admin/tutorial/tutorial.jsp" name="tutorialForm"
+			path="/list-tutorial" type="action.tutorial.TutListAction" scope="request">
+			<forward name="thanhCong" path="/admin/tutorial/tutorial.jsp" />
+		</action>
+<!--end Tutorials -->
+
+<!--code -->
+		<action input="/admin/code/addcode.jsp" name="codeForm" path="/add-code"
+			type="action.code.CodeInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-code.do" />
+		</action>
+
+		<action input="/admin/code/editcode.jsp" name="codeForm" path="/update-code"
+			type="action.code.CodeUpdateAction" scope="request">
+			<forward name="thanhCong" path="/list-code.do" />
+		</action>
+
+		<action input="/admin/code/code.jsp" name="codeForm"
+			path="/prepare-update-code" type="action.code.CodePrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/code/editcode.jsp" />
+		</action>
+
+		<action input="/admin/code/code.jsp" name="codeForm" path="/delete-code"
+			type="action.code.CodeDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-code.do" />
+		</action>
+
+		<action input="/admin/code/code.jsp" name="codeForm" path="/list-code"
+			type="action.code.CodeListAction" scope="request">
+			<forward name="thanhCong" path="/admin/code/code.jsp" />
+		</action>
+<!--end code -->
+
+<!--status -->
+		<action input="/admin/status/status.jsp" name="statusForm"
+			path="/delete-status" type="action.status.StatusDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-status.do" />
+		</action>
+
+		<action input="/admin/status/status.jsp" name="statusForm"
+			path="/list-status" type="action.status.StatusListAction" scope="request">
+			<forward name="thanhCong" path="/admin/status/status.jsp" />
+		</action>
+<!--end status -->
+
+
+<!--Problem -->
+
+		<action input="/admin/problem/addpro.jsp" name="problemForm"
+			path="/add-problem" type="action.problem.ProblemInsertAction" scope="request">
+			<forward name="thanhCong" path="/list-problem.do" />
+		</action>
+		<action input="/admin/problem/problem.jsp" name="problemForm"
+			path="/prepare-add-problem" type="action.problem.ProblemPrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/problem/addpro.jsp" />
+		</action>
+
+		<action input="/admin/problem/editpro.jsp" name="problemForm"
+			path="/update-problem" type="action.problem.ProblemUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-problem.do" />
+		</action>
+
+		<action input="/admin/menu/menu.jsp" name="problemForm" path="/delete-problem"
+			type="action.problem.ProblemDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-problem.do" />
+		</action>
+
+
+		<action input="/admin/problem/problem.jsp" name="problemForm"
+			path="/prepare-update-problem" type="action.problem.ProblemPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/problem/editpro.jsp" />
+		</action>
+
+		<action input="/admin/problem/problem.jsp" name="problemForm"
+			path="/list-problem" type="action.problem.ProblemListAction" scope="request">
+			<forward name="thanhCong" path="/admin/problem/problem.jsp" />
+		</action>
+<!--end problem -->
+
+
+<!--Editorial -->
+		<action input="/admin/editorial/addedi.jsp" name="editorialForm"
+			path="/add-editorial" type="action.editorial.EditorialInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-editorial.do" />
+		</action>
+
+		<action input="/admin/editorial/editorial.jsp" name="editorialForm"
+			path="/prepare-add-editorial" type="action.editorial.EditorialPrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/editorial/addedi.jsp" />
+		</action>
+
+		<action input="/admin/editorial/editedi.jsp" name="editorialForm"
+			path="/update-editorial" type="action.editorial.EditorialUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-editorial.do" />
+		</action>
+
+		<action input="/admin/editorial/editorial.jsp" name="editorialForm"
+			path="/delete-editorial" type="action.editorial.EditorialDeleteAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-editorial.do" />
+		</action>
+
+
+		<action input="/admin/editorial/editorial.jsp" name="editorialForm"
+			path="/prepare-update-editorial" type="action.editorial.EditorialPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/editorial/editedi.jsp" />
+		</action>
+
+
+		<action input="/admin/editorial/editorial.jsp" name="editorialForm"
+			path="/list-editorial" type="action.editorial.EditorialListAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/editorial/editorial.jsp" />
+		</action>
+<!--end editorial -->
+
+<!--leaderboard -->
+		<action input="/admin/leaderboard/leaderboard.jsp" name="leaderBoardForm"
+			path="/list-leaderboard" type="action.leaderboard.LeaderboardListAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/leaderboard/leaderboard.jsp" />
+		</action>
+
+<!--end leaderboard -->
+
+
+<!--categories -->
+		<action input="/admin/categories/addcat.jsp" name="categoriesForm"
+			path="/add-categories" type="action.categories.CategoriesInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-categories.do" />
+		</action>
+
+		<action input="/admin/categories/category.jsp" name="categoriesForm"
+			path="/prepare-add-categories" type="action.categories.CategoriesPrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/categories/addcat.jsp" />
+		</action>
+
+
+		<action input="/admin/categories/editcat.jsp" name="categoriesForm"
+			path="/update-categories" type="action.categories.CategoriesUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-categories.do" />
+		</action>
+
+		<action input="/admin/categories/category.jsp" name="categoriesForm"
+			path="/delete-categories" type="action.categories.CategoriesDeleteAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-categories.do" />
+		</action>
+
+
+		<action input="/admin/categories/category.jsp" name="categoriesForm"
+			path="/prepare-update-categories" type="action.categories.CategoriesPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/categories/editcat.jsp" />
+		</action>
+
+
+		<action input="/admin/categories/category.jsp" name="categoriesForm"
+			path="/list-categories" type="action.categories.CategoriesListAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/categories/category.jsp" />
+		</action>
+<!--end categories -->
+
+<!--TestCase -->
+		<action input="/admin/testcase/addtes.jsp" name="testCaseForm"
+			path="/add-testcase" type="action.testcase.TestCaseInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-testcase.do" />
+		</action>
+
+		<action input="/admin/testcase/testcase.jsp" name="testCaseForm"
+			path="/prepare-add-testcase" type="action.testcase.TestCasePrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/testcase/addtes.jsp" />
+		</action>
+
+
+		<action input="/admin/testcase/edittes.jsp" name="testCaseForm"
+			path="/update-testcase" type="action.testcase.TestCaseUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-testcase.do" />
+		</action>
+
+		<action input="/admin/testcase/testcase.jsp" name="testCaseForm"
+			path="/prepare-update-testcase" type="action.testcase.TestCasePrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/testcase/edittes.jsp" />
+		</action>
+
+		<action input="/admin/testcase/testcase.jsp" name="testCaseForm"
+			path="/delete-testcase" type="action.testcase.TestCaseDeleteAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-testcase.do" />
+		</action>
+
+		<action input="/admin/testcase/testcase.jsp" name="testCaseForm"
+			path="/list-testcase" type="action.testcase.TestCaseListAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/testcase/testcase.jsp" />
+		</action>
+<!--end TestCase -->
+
+<!--Submit -->
+
+		<action input="/admin/submit/editsubmit.jsp" name="submitForm"
+			path="/update-submit" type="action.submit.SubmitUpdateAction" scope="request">
+			<forward name="thanhCong" path="/list-submit.do" />
+		</action>
+
+		<action input="/admin/submit/submit.jsp" name="submitForm"
+			path="/prepare-update-submit" type="action.submit.SubmitPrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/submit/editsubmit.jsp" />
+		</action>
+
+		<action input="/admin/submit/submit.jsp" name="submitForm"
+			path="/delete-submit" type="action.submit.SubmitDeleteAction" scope="request">
+			<forward name="thanhCong" path="/list-submit.do" />
+		</action>
+
+		<action input="/admin/submit/submit.jsp" name="submitForm"
+			path="/list-submit" type="action.submit.SubmitListAction" scope="request">
+			<forward name="thanhCong" path="/admin/submit/submit.jsp" />
+		</action>
+<!--end Submit -->
+
+<!--TutorialCode -->
+		<action input="/admin/tutorialcode/addtuco.jsp" name="tutorialCodeForm"
+			path="/add-tutorialcode" type="action.tutorialcode.TutorialCodeInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-tutorialcode.do" />
+		</action>
+
+		<action input="/admin/tutorialcode/tutorialcode.jsp" name="tutorialCodeForm"
+			path="/prepare-add-tutorialcode" type="action.tutorialcode.TutorialCodePrepareInsertAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/tutorialcode/addtuco.jsp" />
+		</action>
+
+
+		<action input="/admin/tutorialcode/edittuco.jsp" name="tutorialCodeForm"
+			path="/update-tutorialcode" type="action.tutorialcode.TutorialCodeUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-tutorialcode.do" />
+		</action>
+
+		<action input="/admin/tutorialcode/tutorialcode.jsp" name="tutorialCodeForm"
+			path="/prepare-update-tutorialcode" type="action.tutorialcode.TutorialCodePrepareUpdateAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/tutorialcode/edittuco.jsp" />
+		</action>
+
+		<action input="/admin/tutorialcode/tutorialcode.jsp" name="tutorialCodeForm"
+			path="/delete-tutorialcode" type="action.tutorialcode.TutorialCodeDeleteAction"
+			scope="request">
+			<forward name="thanhCong" path="/list-tutorialcode.do" />
+		</action>
+
+		<action input="/admin/tutorialcode/tutorialcode.jsp" name="tutorialCodeForm"
+			path="/list-tutorialcode" type="action.tutorialcode.TutorialCodeListAction"
+			scope="request">
+			<forward name="thanhCong" path="/admin/tutorialcode/tutorialcode.jsp" />
+		</action>
+<!--end TutorialCode -->
+
+<!-- end Action Admin -->
+
+
+
+
+
+	</action-mappings>
+</struts-config>
